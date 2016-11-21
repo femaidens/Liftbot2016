@@ -1,8 +1,11 @@
 package org.usfirst.frc.team2265.robot;
 
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.Joystick;
 import org.usfirst.frc.team2265.robot.commands.ExampleCommand;
-
+import org.usfirst.frc.team2265.robot.commands.SwapWheel;
+import org.usfirst.frc.team2265.robot.commands.DriveCommand;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -14,7 +17,12 @@ public class OI {
     // number it is.
     // Joystick stick = new Joystick(port);
     // Button button = new JoystickButton(stick, buttonNumber);
-    
+    public static Joystick atkjoy = new Joystick(0);
+  	public static Button swap = new JoystickButton (atkjoy, 4);
+  
+  	public void bindButtons() {
+      swap.whenPressed(new SwapWheel());
+         }
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to
     // commands the same as any other Button.
